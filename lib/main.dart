@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:wordsify/core/homepage.dart';
+import 'package:wordsify/core/my_form.dart';
 
 void main() {
   runApp(const Wordsify());
@@ -35,7 +35,7 @@ class Wordsify extends StatelessWidget {
           ),
         ),
       ),
-      home: const Homepage(),
+      home: MyForm(),
     );
   }
 }
