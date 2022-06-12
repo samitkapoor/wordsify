@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class Homepage extends StatelessWidget {
   const Homepage({super.key});
@@ -8,12 +7,10 @@ class Homepage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'wordsify',
-          style: GoogleFonts.aBeeZee(
-            fontSize: 20,
-          ),
         ),
+        centerTitle: true,
       ),
     );
   }
