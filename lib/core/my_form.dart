@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fading_widget_animation/core/fading_widget.dart';
 import 'package:provider/provider.dart';
 
 import 'package:wordsify/controllers/list_controller.dart';
