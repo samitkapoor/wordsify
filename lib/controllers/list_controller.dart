@@ -40,12 +40,12 @@ class ListController extends ChangeNotifier {
 
   void load() {
     Timer timer = Timer.periodic(
-      const Duration(seconds: 100),
+      const Duration(seconds: 1),
       (timer) {
         wordsFound.add('value');
         counter++;
-
-        if (counter == 100) {
+        print('added');
+        if (counter == 10) {
           timer.cancel();
           isLoading = false;
         }

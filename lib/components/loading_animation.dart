@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:wordsify/components/up_down_animation.dart';
+import 'package:wordsify/components/up_down_animator.dart';
 
 class LoadingMoreAnimationWidget extends StatelessWidget {
   const LoadingMoreAnimationWidget({super.key});

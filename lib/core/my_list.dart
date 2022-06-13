@@ -26,21 +26,28 @@ class MyList extends StatelessWidget {
           physics: const ScrollPhysics(),
           shrinkWrap: true,
           children: [
-            ListView.builder(
+            GridView.builder(
               shrinkWrap: true,
               physics: const ScrollPhysics(),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                mainAxisSpacing: 10,
+                crossAxisSpacing: 10,
+                childAspectRatio: 3 / 1,
+              ),
               itemCount: listController.wordsFound.length,
               itemBuilder: (context, index) => FadingWidgetAnimator(
-                startAfter: Duration(milliseconds: 250 + (index * 150)),
+                duration: const Duration(milliseconds: 200),
                 child: Text(
                   listController.wordsFound[index],
                   style: Theme.of(context).textTheme.headline3!.copyWith(
                         fontSize: 22,
                       ),
+                  textAlign: TextAlign.center,
                 ),
               ),
             ),
-            LoadingMoreAnimationWidget(),
+            const LoadingMoreAnimationWidget(),
           ],
         ),
       ),
