@@ -6,7 +6,9 @@ import 'package:wordsify/core/my_form.dart';
 import 'package:wordsify/core/my_grid.dart';
 
 class Homepage extends StatelessWidget {
-  const Homepage({super.key});
+  Homepage({super.key});
+
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,7 @@ class Homepage extends StatelessWidget {
         body: Consumer<ListController>(
           builder: (context, listController, child) {
             if (listController.wordsFound.isEmpty) {
-              return MyForm();
+              return MyForm(formKey: formKey);
             } else {
               return const MyGrid();
             }
