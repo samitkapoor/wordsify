@@ -1,57 +1,47 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 
+import 'package:wordsify/utils/api.dart';
+
 class ListController extends ChangeNotifier {
+  List<String> englishWords = [];
   List<String> wordsFound = [];
   bool isLoading = true;
-  int counter = 0;
 
   void reset() {
-    counter = 0;
     wordsFound = [];
+    englishWords = [];
     isLoading = true;
     notifyListeners();
   }
 
-  void onSubmit(String value) {
-    wordsFound = [
-      'faint',
-      'jelly',
-      'roach',
-      'diner',
-      'group',
-      'mummy',
-      'booty',
-      'rajah',
-      'exile',
-      'exelt',
-      'learn',
-      'moist',
-      'wound',
-      'audio',
-      'glent',
-      'foyer',
-    ];
+  void addPermutations(String value, String asf) async {
+    if (value.isEmpty) {
+      englishWords.add(asf);
+      notifyListeners();
+    }
 
-    load();
-    notifyListeners();
+    for (int i = 0; i < value.length; i++) {
+      var ch = value[i];
+      String left = value.substring(0, i);
+      String right = value.substring(i + 1);
+
+      String roq = left + right;
+
+      addPermutations(roq, asf + ch);
+    }
   }
 
-  void load() {
-    Timer timer = Timer.periodic(
-      const Duration(seconds: 1),
-      (timer) {
-        wordsFound.add('value');
-        counter++;
+  void onSubmit(String value) async {
+    addPermutations(value, "");
 
-        if (counter == 10) {
-          timer.cancel();
-          isLoading = false;
-        }
+    for (int i = 0; i < englishWords.length; i++) {
+      bool flag = await isItAWord(englishWords[i]);
 
-        notifyListeners();
-      },
-    );
+      if (flag) {
+        wordsFound.add(englishWords[i]);
+      }
+    }
   }
+
+  void load() {}
 }
