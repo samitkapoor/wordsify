@@ -7,6 +7,13 @@ class ListController extends ChangeNotifier {
   bool isLoading = true;
   int counter = 0;
 
+  void reset() {
+    counter = 0;
+    wordsFound = [];
+    isLoading = true;
+    notifyListeners();
+  }
+
   void onSubmit(String value) {
     wordsFound = [
       'faint',
