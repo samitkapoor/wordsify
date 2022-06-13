@@ -1,6 +1,7 @@
 import 'package:fading_widget_animation/core/fading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:wordsify/components/loading_animation.dart';
 import 'package:wordsify/controllers/list_controller.dart';
 
 class MyList extends StatelessWidget {
@@ -22,9 +23,12 @@ class MyList extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         child: ListView(
+          physics: const ScrollPhysics(),
+          shrinkWrap: true,
           children: [
             ListView.builder(
               shrinkWrap: true,
+              physics: const ScrollPhysics(),
               itemCount: listController.wordsFound.length,
               itemBuilder: (context, index) => FadingWidgetAnimator(
                 startAfter: Duration(milliseconds: 250 + (index * 150)),
@@ -36,6 +40,7 @@ class MyList extends StatelessWidget {
                 ),
               ),
             ),
+            LoadingMoreAnimationWidget(),
           ],
         ),
       ),
