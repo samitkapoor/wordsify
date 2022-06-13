@@ -4,8 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:wordsify/components/loading_animation.dart';
 import 'package:wordsify/controllers/list_controller.dart';
 
-class MyList extends StatelessWidget {
-  const MyList({super.key});
+class MyGrid extends StatelessWidget {
+  const MyGrid({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +31,8 @@ class MyList extends StatelessWidget {
               physics: const ScrollPhysics(),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
-                mainAxisSpacing: 10,
-                crossAxisSpacing: 10,
+                mainAxisSpacing: 5,
+                crossAxisSpacing: 5,
                 childAspectRatio: 3 / 1,
               ),
               itemCount: listController.wordsFound.length,

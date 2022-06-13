@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wordsify/controllers/list_controller.dart';
 import 'package:wordsify/core/my_form.dart';
-import 'package:wordsify/core/my_list.dart';
+import 'package:wordsify/core/my_grid.dart';
 
 class Homepage extends StatelessWidget {
   const Homepage({super.key});
@@ -21,7 +21,7 @@ class Homepage extends StatelessWidget {
             if (listController.wordsFound.isEmpty) {
               return MyForm();
             } else {
-              return MyList();
+              return const MyGrid();
             }
           },
         ),

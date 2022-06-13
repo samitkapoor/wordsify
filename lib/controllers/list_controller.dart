@@ -44,7 +44,7 @@ class ListController extends ChangeNotifier {
       (timer) {
         wordsFound.add('value');
         counter++;
-        print('added');
+
         if (counter == 10) {
           timer.cancel();
           isLoading = false;
