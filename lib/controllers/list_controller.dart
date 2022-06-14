@@ -17,7 +17,6 @@ class ListController extends ChangeNotifier {
   Future<void> addPermutations(String value, String asf) async {
     if (value.isEmpty) {
       englishWords.add(asf);
-      notifyListeners();
     }
 
     for (int i = 0; i < value.length; i++) {
