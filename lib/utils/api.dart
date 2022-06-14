@@ -5,8 +5,6 @@ import 'package:http/http.dart' as http;
 import 'package:wordsify/constants/dictionary_api.dart';
 
 Future<bool> isItAWord(String word) async {
-  // print(word + "\n");
-
   String url = dictionaryApi + word;
 
   var response = await http.get(

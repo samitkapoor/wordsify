@@ -1,5 +1,6 @@
 import 'package:fading_widget_animation/core/fading_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:wordsify/components/loading_animation.dart';
 import 'package:wordsify/controllers/list_controller.dart';
@@ -47,7 +48,23 @@ class MyGrid extends StatelessWidget {
                 ),
               ),
             ),
-            const LoadingMoreAnimationWidget(),
+            Consumer<ListController>(builder: (context, listController, child) {
+              if (listController.isLoading) {
+                return const LoadingMoreAnimationWidget();
+              } else {
+                String suffix = (listController.wordsFound.length == 1)
+                    ? 'result!'
+                    : 'results';
+                return Text(
+                  'Found ${listController.wordsFound.length} $suffix',
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline4!
+                      .copyWith(fontSize: 18),
+                  textAlign: TextAlign.center,
+                );
+              }
+            }),
           ],
         ),
       ),
