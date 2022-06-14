@@ -20,7 +20,7 @@ class Homepage extends StatelessWidget {
         ),
         body: Consumer<ListController>(
           builder: (context, listController, child) {
-            if (listController.wordsFound.isEmpty) {
+            if (!listController.gridScreen) {
               return MyForm(formKey: formKey);
             } else {
               return const MyGrid();

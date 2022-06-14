@@ -5,12 +5,14 @@ import 'package:wordsify/utils/api.dart';
 class ListController extends ChangeNotifier {
   List<String> englishWords = [];
   List<String> wordsFound = [];
-  bool isLoading = true;
+  bool isLoading = false;
+  bool gridScreen = false;
 
   void reset() {
     wordsFound = [];
     englishWords = [];
-    isLoading = true;
+    isLoading = false;
+    gridScreen = false;
     notifyListeners();
   }
 
@@ -47,6 +49,9 @@ class ListController extends ChangeNotifier {
   }
 
   void onSubmit(String value) async {
+    gridScreen = isLoading = true;
+    notifyListeners();
+
     await addPermutations(value);
 
     for (int i = 0; i < englishWords.length; i++) {
