@@ -14,7 +14,7 @@ class ListController extends ChangeNotifier {
     notifyListeners();
   }
 
-  void addPermutations(String value, String asf) async {
+  Future<void> addPermutations(String value, String asf) async {
     if (value.isEmpty) {
       englishWords.add(asf);
       notifyListeners();
@@ -32,16 +32,15 @@ class ListController extends ChangeNotifier {
   }
 
   void onSubmit(String value) async {
-    addPermutations(value, "");
+    await addPermutations(value, "");
 
     for (int i = 0; i < englishWords.length; i++) {
       bool flag = await isItAWord(englishWords[i]);
 
       if (flag) {
         wordsFound.add(englishWords[i]);
+        notifyListeners();
       }
     }
   }
-
-  void load() {}
 }

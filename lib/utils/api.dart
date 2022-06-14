@@ -5,6 +5,8 @@ import 'package:http/http.dart' as http;
 import 'package:wordsify/constants/dictionary_api.dart';
 
 Future<bool> isItAWord(String word) async {
+  // print(word + "\n");
+
   String url = dictionaryApi + word;
 
   var response = await http.get(
@@ -16,15 +18,9 @@ Future<bool> isItAWord(String word) async {
 
   var extractedData = await json.decode(response.body);
 
-  Map<String, dynamic> data = {};
-
-  extractedData.forEach((val) {
-    data = val;
-  });
-
-  if (data.containsKey('title') == true) {
-    return Future.value(false);
+  if (extractedData is List) {
+    return Future.value(true);
   }
 
-  return Future.value(true);
+  return Future.value(false);
 }
