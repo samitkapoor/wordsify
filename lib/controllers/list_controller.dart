@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
-
-import 'package:wordsify/utils/api.dart';
+import 'package:wordsify/constants/a_lot_of_words.dart';
 
 class ListController extends ChangeNotifier {
-  List<String> englishWords = [];
   List<String> wordsFound = [];
   bool isLoading = false;
   bool gridScreen = false;
 
   void reset() {
     wordsFound = [];
-    englishWords = [];
     isLoading = false;
     gridScreen = false;
     notifyListeners();
@@ -25,7 +22,7 @@ class ListController extends ChangeNotifier {
     return f;
   }
 
-  Future<void> addPermutations(String letters) async {
+  void getWords(String letters) {
     int n = letters.length;
     int f = factorial(n);
 
@@ -44,26 +41,24 @@ class ListController extends ChangeNotifier {
         temp = q;
       }
 
-      englishWords.add(result);
+      for (int index = 0; index < words.length; index++) {
+        if (words[index] == result && !wordsFound.contains(result)) {
+          wordsFound.add(result);
+          notifyListeners();
+          break;
+        }
+      }
     }
   }
 
-  void onSubmit(String value) async {
+  void onSubmit(String value) {
     gridScreen = isLoading = true;
     notifyListeners();
 
-    await addPermutations(value);
-
-    for (int i = 0; i < englishWords.length; i++) {
-      bool flag = isItAWord(englishWords[i]);
-
-      if (flag) {
-        wordsFound.add(englishWords[i]);
-        notifyListeners();
-      }
-    }
-
-    isLoading = false;
-    notifyListeners();
+    Future.delayed(const Duration(seconds: 1)).then((val) {
+      getWords(value);
+      isLoading = false;
+      notifyListeners();
+    });
   }
 }
