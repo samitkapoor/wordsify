@@ -55,7 +55,7 @@ class ListController extends ChangeNotifier {
     await addPermutations(value);
 
     for (int i = 0; i < englishWords.length; i++) {
-      bool flag = await isItAWord(englishWords[i]);
+      bool flag = isItAWord(englishWords[i]);
 
       if (flag) {
         wordsFound.add(englishWords[i]);

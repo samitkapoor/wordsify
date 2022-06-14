@@ -1,7 +1,7 @@
-import 'package:fading_widget_animation/core/fading_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:fading_widget_animation/core/fading_widget.dart';
+
 import 'package:wordsify/components/loading_animation.dart';
 import 'package:wordsify/controllers/list_controller.dart';
 
