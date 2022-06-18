@@ -41,11 +41,35 @@ class ListController extends ChangeNotifier {
         temp = q;
       }
 
-      for (int index = 0; index < words.length; index++) {
-        if (words[index] == result && !wordsFound.contains(result)) {
-          wordsFound.add(result);
-          notifyListeners();
-          break;
+      if (result.startsWith('a') ||
+          result.startsWith('b') ||
+          result.startsWith('c') ||
+          result.startsWith('d') ||
+          result.startsWith('e') ||
+          result.startsWith('f') ||
+          result.startsWith('g') ||
+          result.startsWith('h') ||
+          result.startsWith('i') ||
+          result.startsWith('j') ||
+          result.startsWith('k') ||
+          result.startsWith('l') ||
+          result.startsWith('m') ||
+          result.startsWith('n')) {
+        for (int index = 0; index < wordsOne.length; index++) {
+          if (wordsOne[index] == result && !wordsFound.contains(result)) {
+            wordsFound.add(result);
+
+            notifyListeners();
+            break;
+          }
+        }
+      } else {
+        for (int index = 0; index < wordsTwo.length; index++) {
+          if (wordsTwo[index] == result && !wordsFound.contains(result)) {
+            wordsFound.add(result);
+            notifyListeners();
+            break;
+          }
         }
       }
     }
