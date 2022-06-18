@@ -8,6 +8,7 @@ A Flutter application designed to unscramble english letters
 
 # Packages Used: 
 
+- [provider](https://pub.dev/packages/provider)
 - [google_fonts](https://pub.dev/packages/google_fonts)
 - [fading_widget_animation](https://pub.dev/packages/fading_widget_animation)
 
